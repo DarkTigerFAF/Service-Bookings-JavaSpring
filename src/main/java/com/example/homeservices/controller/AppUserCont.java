@@ -1,6 +1,6 @@
 package com.example.homeservices.controller;
 
-import com.example.homeservices.model.AppUser;
+import com.example.homeservices.model.Users;
 import com.example.homeservices.service.AppUserServ;
 import jakarta.validation.Valid;
 import org.springframework.validation.annotation.Validated;
@@ -18,12 +18,17 @@ public class AppUserCont {
     }
 
     @GetMapping("/")
-    public List<AppUser> getAllUsers(){
+    public List<Users> getAllUsers(){
         return appUserServ.getAllUsers();
     }
 
-    @PostMapping("/")
-    public void createUser(@Valid @RequestBody AppUser user){
+    @PostMapping("/register")
+    public void createUser(@Valid @RequestBody Users user){
         appUserServ.createUser(user);
+    }
+
+    @PostMapping("/login")
+    public String loginUser(@RequestBody Users user){
+        return appUserServ.verify(user);
     }
 }

@@ -21,7 +21,7 @@ public class Booking {
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)
     @NotNull(message = "User is required")
-    private AppUser user;
+    private Users user;
 
     @ManyToOne
     @JoinColumn(name = "service_id", nullable = false)
