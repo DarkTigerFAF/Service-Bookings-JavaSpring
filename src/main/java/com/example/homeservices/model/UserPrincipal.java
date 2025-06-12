@@ -30,6 +30,8 @@ public class UserPrincipal implements UserDetails {
         return user.getPassword();
     }
 
+    public String getEmail() { return user.getEmail(); }
+
     @Override
     public boolean isEnabled() {
         return true;

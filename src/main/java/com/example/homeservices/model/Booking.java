@@ -1,7 +1,6 @@
 package com.example.homeservices.model;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.*;
 
@@ -13,6 +12,9 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
+@Table(name = "booking", uniqueConstraints = {
+        @UniqueConstraint(columnNames = {"user_id", "service_id"})
+})
 public class Booking {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -28,14 +30,8 @@ public class Booking {
     @NotNull(message = "Service is required")
     private Services services;
 
-    @NotBlank(message = "Status is required")
-    private String status;
-
     @NotNull(message = "Date is required")
     private LocalDateTime date;
-
-    @NotBlank(message = "Address is required")
-    private String address;
 
     private String notes;
 }

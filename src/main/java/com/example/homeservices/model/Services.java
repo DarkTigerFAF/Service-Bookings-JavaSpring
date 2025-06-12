@@ -27,7 +27,4 @@ public class Services {
 
     @Positive(message = "Price must be positive")
     private double price;
-
-    @NotBlank(message = "Category is required")
-    private String category;
 }
